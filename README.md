@@ -1,4 +1,4 @@
-# AOS_Project3_Group4
+# AOS_Project_Group4
 
 ## Instructions for Compilation and Execution
 
