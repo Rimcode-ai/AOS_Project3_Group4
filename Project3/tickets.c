@@ -1,3 +1,11 @@
+/*
+ Group 4
+Advance Operating Systems
+Members: Rima, Gouri, Mounika
+Algorithm: Tickets sorted in order
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
