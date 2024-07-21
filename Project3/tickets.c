@@ -188,7 +188,7 @@ void *sell(void *seller)
         {
             Customer *temp = (Customer *) dequeue (customerQueue);
             enqueue(sellerQueue, temp);
-            printf("| 00:%02d |    %c%d       | Customer %c%d%02d arrived                  |               |                 |\n", currentTime, sellerType, sellerID, sellerType, sellerID, temp->customerID);
+            printf("| 00:%02d |    %c%d       | Customer %c%d%02d arrived                                   |                 |                 |\n", currentTime, sellerType, sellerID, sellerType, sellerID, temp->customerID);
         }
 
         //Process the service for the next customer
@@ -197,7 +197,7 @@ void *sell(void *seller)
             c = (Customer *) dequeue(sellerQueue);
             c->responseTime = currentTime - c->arrivalTime;
 
-            printf("| 00:%02d |    %c%d       | Serving Customer %c%d%02d                  |      %8d |                 |\n",
+            printf("| 00:%02d |    %c%d       | Serving Customer %c%d%02d                                   |       %8d  |                 |\n",
                     currentTime, sellerType, sellerID, sellerType, sellerID, c->customerID, c->responseTime);
             if(sellerType == 'H')
             {
@@ -236,7 +236,7 @@ void *sell(void *seller)
                     int columnID = seatID % CONCERT_COLUMN;
                     c->turnaroundTime = c->turnaroundTime + currentTime;
                     sprintf(seats_matrix[rowID][columnID], "%c%d%02d", sellerType, sellerID, c->customerID);
-                    printf("| 00:%02d |    %c%d       | Customer %c%d%02d is assigned seat %d       |             %d | %13d   |\n",
+                    printf("| 00:%02d |    %c%d       | Customer %c%d%02d is assigned seat (row,column) %d    %d      |            %4d |  %12d   |\n",
                             currentTime, sellerType, sellerID, sellerType, sellerID, c->customerID, rowID, columnID, c->turnaroundTime);
                     
                     if(sellerType == 'H')
@@ -263,7 +263,7 @@ void *sell(void *seller)
     {
         if(c == NULL)
             c = (Customer *) dequeue(sellerQueue);
-        printf("| 00:%02d |    %c%d       | Tickets Sold Out. Customer %c%d%02d Leaves |               |                 |\n",
+        printf("| 00:%02d |    %c%d       | Tickets Sold Out. Customer %c%d%02d Leaves |                |                 |                 |\n",
         currentTime, sellerType, sellerID, sellerType, sellerID, c->customerID);
         c = NULL;
     }
@@ -365,9 +365,9 @@ int main(int argc, char **argv)
 
     //Consider each time slice as one iteration in the simulation
     printf("\nStarting the Thread Simulation Process");
-	printf("\n--------------------------------------------------------------------------------------------------\n");
-	printf("| Time  | Seller Name |                 Activity               | Response Time | Turnaround Time |");
-	printf("\n--------------------------------------------------------------------------------------------------\n");
+	printf("\n---------------------------------------------------------------------------------------------------------------------\n");
+	printf("| Time  | Seller Name |                 Activity                                  | Response Time | Turnaround Time |");
+	printf("\n---------------------------------------------------------------------------------------------------------------------\n");
 	threadsWaitingForClockTick = 0;
 	wakeup_all_seller_threads();
 
@@ -384,7 +384,7 @@ int main(int argc, char **argv)
     while(activeThread);
 
     //Display seats chart
-    printf("--------------------------------------------------------------------------------------------------\n");
+    printf("---------------------------------------------------------------------------------------------------------------------\n");
     printf("\nThread Simulation Successfully Completed\n\n");
 	printf("\n\n");
 	printf("\n===============================================================================================================\n");
