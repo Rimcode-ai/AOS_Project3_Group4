@@ -236,7 +236,7 @@ void *sell(void *seller)
                     int columnID = seatID % CONCERT_COLUMN;
                     c->turnaroundTime = c->turnaroundTime + currentTime;
                     sprintf(seats_matrix[rowID][columnID], "%c%d%02d", sellerType, sellerID, c->customerID);
-                    printf("| 00:%02d |    %c%d       | Customer %c%d%02d is assigned seat %d       |             %d | %13d   |\n",
+                    printf("| 00:%02d |    %c%d       | Customer %c%d%02d is assigned row %d       |             %d | %13d   |\n",
                             currentTime, sellerType, sellerID, sellerType, sellerID, c->customerID, rowID, columnID, c->turnaroundTime);
                     
                     if(sellerType == 'H')
