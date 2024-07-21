@@ -6,3 +6,16 @@ make run | sed 's/seat \([0-9]\+\)\s\+\([0-9]\+\)/seat \1 \2/'
 
 make run | awk '{if ($0 ~ /seat [0-9]+/) {printf "%-20s %-10s %-10s\n", $1, $2, $3} else {print $0}}'
 
+
+
+
+//Modified 3
+
+make run | awk '
+{
+  if ($0 ~ /seat [0-9]+/) {
+    sub(/seat ([0-9]+)\s+([0-9]+)/, "seat \\1 \\2");
+  }
+  print
+}'
+
