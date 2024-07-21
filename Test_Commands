@@ -1,2 +1,2 @@
-
-make run > output.txt && column -t output.txt -o ' | ' > temp.txt && mv temp.txt output.txt
+//Modification of SQL alignment in Linux
+make run | sed 's/seat \([0-9]\+\)\s\+\([0-9]\+\)/seat \1 \2/'
