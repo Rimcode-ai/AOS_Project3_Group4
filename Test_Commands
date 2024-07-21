@@ -1,2 +1,8 @@
 //Modification of SQL alignment in Linux
 make run | sed 's/seat \([0-9]\+\)\s\+\([0-9]\+\)/seat \1 \2/'
+
+
+//Modified 2
+
+make run | awk '{if ($0 ~ /seat [0-9]+/) {printf "%-20s %-10s %-10s\n", $1, $2, $3} else {print $0}}'
+
