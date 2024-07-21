@@ -1,0 +1,2 @@
+
+make run > output.txt && column -t output.txt -o ' | ' > temp.txt && mv temp.txt output.txt
