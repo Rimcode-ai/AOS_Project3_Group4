@@ -234,10 +234,11 @@ void *sell(void *seller)
                 {
                     int rowID = seatID / CONCERT_COLUMN;
                     int columnID = seatID % CONCERT_COLUMN;
-                    c->turnaroundTime = c->turnaroundTime + currentTime;
+                    c->turnaroundTime = currentTime - c->arrivalTime;
+                    //c->turnaroundTime = c->turnaroundTime + currentTime;
                     sprintf(seats_matrix[rowID][columnID], "%c%d%02d", sellerType, sellerID, c->customerID);
                     printf("| 00:%02d |    %c%d       | Customer %c%d%02d is assigned seat (row,column) %d    %d      |            %4d |  %12d   |\n",
-                            currentTime, sellerType, sellerID, sellerType, sellerID, c->customerID, rowID, columnID, c->turnaroundTime);
+                            currentTime, sellerType, sellerID, sellerType, sellerID, c->customerID, rowID, columnID,c->responseTime, c->turnaroundTime);
                     
                     if(sellerType == 'H')
                     {
@@ -413,9 +414,9 @@ int main(int argc, char **argv)
 	printf("---------------------------------------------------------------------------------------------------------------\n");
 	printf("| Seller | Number of Customers | Sold Seats | Returned | Throughput | Avg Response Time | Avg Turnaround time |\n");
 	printf("---------------------------------------------------------------------------------------------------------------\n");
-	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'H', SELLER_H * N, h_customers, (SELLER_H * N) - h_customers, (h_customers / 60.0), responseTimeForH / (N * 1.0), turnaroundTimeForH / (SELLER_H * N) - h_customers));
-	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'M', SELLER_M * N, m_customers, (SELLER_M * N) - m_customers, (m_customers / 60.0), responseTimeForM / (3.0 * N), turnaroundTimeForM / (SELLER_H * N) - h_customers));
-	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'L', SELLER_L * N, l_customers, (SELLER_L * N) - l_customers, (l_customers / 60.0), responseTimeForL / (6.0 * N), turnaroundTimeForL / (SELLER_H * N) - h_customers)));
+	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'H', SELLER_H * N, h_customers, (SELLER_H * N) - h_customers, (h_customers / 60.0), responseTimeForH / (1.0*N), turnaroundTimeForH / (float)h_customers);
+	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'M', SELLER_M * N, m_customers, (SELLER_M * N) - m_customers, (m_customers / 60.0), responseTimeForM / (3.0*N), turnaroundTimeForM / (float)m_customers);
+	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'L', SELLER_L * N, l_customers, (SELLER_L * N) - l_customers, (l_customers / 60.0), responseTimeForL / (6.0*N), turnaroundTimeForL / (float)l_customers);
 	printf(" --------------------------------------------------------------------------------------------------------------\n");
 	printf("\n");
 	return 0;
