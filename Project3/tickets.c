@@ -413,9 +413,9 @@ int main(int argc, char **argv)
 	printf("---------------------------------------------------------------------------------------------------------------\n");
 	printf("| Seller | Number of Customers | Sold Seats | Returned | Throughput | Avg Response Time | Avg Turnaround time |\n");
 	printf("---------------------------------------------------------------------------------------------------------------\n");
-	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'H', SELLER_H * N, h_customers, (SELLER_H * N) - h_customers, (h_customers / 60.0), responseTimeForH / (N * 1.0), turnaroundTimeForH / (0.8 * N));
-	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'M', SELLER_M * N, m_customers, (SELLER_M * N) - m_customers, (m_customers / 60.0), responseTimeForM / (3.0 * N), turnaroundTimeForM / (3.0 * N));
-	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'L', SELLER_L * N, l_customers, (SELLER_L * N) - l_customers, (l_customers / 60.0), responseTimeForL / (6.0 * N), turnaroundTimeForL / (4.5 * N)));
+	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'H', SELLER_H * N, h_customers, (SELLER_H * N) - h_customers, (h_customers / 60.0), responseTimeForH / (N * 1.0), turnaroundTimeForH / (SELLER_H * N) - h_customers));
+	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'M', SELLER_M * N, m_customers, (SELLER_M * N) - m_customers, (m_customers / 60.0), responseTimeForM / (3.0 * N), turnaroundTimeForM / (SELLER_H * N) - h_customers));
+	printf("| %3c    | %19d | %10d | %8d | %.2f       | %3f          | %.2f               |\n",'L', SELLER_L * N, l_customers, (SELLER_L * N) - l_customers, (l_customers / 60.0), responseTimeForL / (6.0 * N), turnaroundTimeForL / (SELLER_H * N) - h_customers)));
 	printf(" --------------------------------------------------------------------------------------------------------------\n");
 	printf("\n");
 	return 0;
