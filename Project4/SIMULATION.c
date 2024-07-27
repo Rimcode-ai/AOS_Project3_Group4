@@ -5,8 +5,7 @@
  Algorithm: Random Page Replacement Algorithm
  */
 
-
-#include "PAGE.h"
+ #include "PAGE.h"
 
 int main(int arg1, char* arg2[]) {
     // To set simulator timestamp
