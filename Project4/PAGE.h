@@ -1,10 +1,3 @@
-/*
- Group 4
- Advance Operating Systems
- Project4
- Algorithm: Initialization of Pages
- */
-
 #ifndef PAGING_H
 #define PAGING_H
 
@@ -56,7 +49,8 @@ void DisplayPages(LIST_OF_PAGES*);
 // To get all pages number
 int PGNUMNXT(int,int);
 
-int CompareArrivalTime1(const void* a, const void* b); 
+// To compare between arrival time
+int CompareArrivalTime(const void* ,const void*);
 // Pagesid who are free
 page* IDOfPageFree(LIST_OF_PAGES*,int,int);
 
