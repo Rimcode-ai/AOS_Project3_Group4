@@ -1,4 +1,10 @@
-/* Implementation of LFU Algorithm */
+/*
+ Group 4
+ Advance Operating Systems
+ Project4
+ Algorithm: FCFS Algorithm
+ */
+
 
 #include "PAGE.h"
 
