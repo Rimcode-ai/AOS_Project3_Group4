@@ -5,6 +5,7 @@
  Algorithm: FCFS Algorithm
  */
 
+
 #include "PAGE.h"
 
 void FCFS_FUNCTION(LIST_OF_PAGES* plFCFS) {
