@@ -5,7 +5,6 @@
  Algorithm: Initialization of Pages
  */
 
-
 #include "PAGE.h"
 
 // To initialize the list of pages with free pages
@@ -108,10 +107,6 @@ page* IDOfPageFree(LIST_OF_PAGES* listOfPages, int pid, int PAGE_NUMBER) {
     return NULL;
 }
 
-// To compare arrival times for sorting
-int CompareArrivalTime(const void* a, const void* b) {
-    return ((process*)a)->TIMEARR - ((process*)b)->TIMEARR;
-}
 // To compare arrival times for sorting
 int CompareArrivalTime(const void* a, const void* b) {
     return ((process*)a)->TIMEARR - ((process*)b)->TIMEARR;
