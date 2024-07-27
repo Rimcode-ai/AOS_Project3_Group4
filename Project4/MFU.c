@@ -1,4 +1,9 @@
-/* Implementation of MFU Algorithm */
+/*
+ Group 4
+ Advance Operating Systems
+ Project4
+ Algorithm: LRU Algorithm
+ */
 
 #include "PAGE.h"
 
