@@ -56,6 +56,7 @@ void DisplayPages(LIST_OF_PAGES*);
 // To get all pages number
 int PGNUMNXT(int,int);
 
+int CompareArrivalTime1(const void* a, const void* b); 
 // Pagesid who are free
 page* IDOfPageFree(LIST_OF_PAGES*,int,int);
 
