@@ -108,6 +108,6 @@ page* IDOfPageFree(LIST_OF_PAGES* listOfPages, int pid, int PAGE_NUMBER) {
 }
 
 // To compare arrival times for sorting
-int CompareArrivalTime(const void* a, const void* b) {
+int CompareArrivalTime1(const void* a, const void* b) {
     return ((process*)a)->TIMEARR - ((process*)b)->TIMEARR;
 }
