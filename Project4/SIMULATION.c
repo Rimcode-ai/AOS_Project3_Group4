@@ -1,3 +1,11 @@
+/*
+ Group 4
+ Advance Operating Systems
+ Project4
+ Algorithm: Random Page Replacement Algorithm
+ */
+
+
 #include "PAGE.h"
 
 int main(int arg1, char* arg2[]) {
