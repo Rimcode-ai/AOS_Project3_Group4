@@ -19,8 +19,9 @@ int main(int arg1, char* arg2[]) {
     PGCoptn[3] = 31;
 
     // To set hit and miss counters
-    int hitCounter = 0;
-    int missesCounter = 0;
+    int hitCounter[5] = {0, 0, 0, 0, 0};
+    int missesCounter[5] = {0, 0, 0, 0, 0};
+    char names[5][10] = {"FCFS", "LRU", "LFU", "MFU", "Random"};
 
     // The pointer to the Page
     page *pagePtr;
@@ -52,7 +53,7 @@ int main(int arg1, char* arg2[]) {
         return -1;
     }
 
-    int swappingInProcess = 0;
+    int swappingInProcess[5] = {0, 0, 0, 0, 0};
 
     // To seed the random number generator
     srand(0);
@@ -94,7 +95,7 @@ int main(int arg1, char* arg2[]) {
                     p->CNTER = 1;
                     p->LONE = timestamp;
                     printf("\nPage -> %d for Process ID -> %d brought in at -> %f\n", Q[index].PGCRR, Q[index].pid, p->FTBOUGHT);
-                    swappingInProcess++;
+                    swappingInProcess[i]++;
                     index++;
                 } else
                     break;
@@ -113,7 +114,7 @@ int main(int arg1, char* arg2[]) {
                         }
                         pagePtr->CNTER++;
                         pagePtr->LONE = timestamp;
-                        hitCounter++;
+                        hitCounter[i]++;
                         continue;
                     }
                     // If we are here, that means we referred a page that is not in memory
@@ -133,8 +134,8 @@ int main(int arg1, char* arg2[]) {
                     pageeeg->LONE = timestamp + (0.1 * i);
                     pageeeg->CNTER = 0;
                     printf("\nPage -> %d for process %d brought in at %f\n", Q[j].PGCRR, Q[j].pid, pageeeg->FTBOUGHT);
-                    swappingInProcess++;
-                    missesCounter++;
+                    swappingInProcess[i]++;
+                    missesCounter[i]++;
                 }
             }
             
@@ -154,20 +155,33 @@ int main(int arg1, char* arg2[]) {
     }
 
     // To calculate the hit-miss ratio
-    float hitMissRatio = (float) hitCounter / missesCounter;
+    float hitMissRatio = (float) hitCounter[i] / missesCounter[i];
  
      // To calculate the hit ratio
-    float hitRatio = (float) hitCounter / (hitCounter + missesCounter);
+    float hitRatio = (float) hitCounter[i] / (hitCounter[i] + missesCounter[i]);
  
    // To calculate the miss ratio
-    float MissRatio = (float) missesCounter / (hitCounter + missesCounter);
+    float MissRatio = (float) missesCounter[i] / (hitCounter[i] + missesCounter[i]);
  
  
 
     // To print the output results
-    printf("\nAverage number of processes that were successfully swapped in: %d", (swappingInProcess / 5));
+    printf("\nAverage number of processes that were successfully swapped in: %d", (swappingInProcess[i] / 5));
     printf("\nThe Hit-Miss Ratio: %.6f\n", hitMissRatio);
     printf("\nThe Hit Ratio: %.6f\n", hitRatio);
     printf("\nThe Miss Ratio: %.6f\n", MissRatio);
+
+    // To print the final results in a table format
+    printf("-------------------------------------------------------------------------------------------------------------\n");
+    printf("\n| Simulator                           | Hit-Miss Ratio | Hit Ratio | Miss Ratio | Average Swapped Processes |\n");
+    printf("-------------------------------------------------------------------------------------------------------------\n");
+     for (i = 0; i < 5; i++) {
+        strcpy(names[0],"FCFS");
+        float hitMissRatio = (float) hitCounter[i] / missesCounter[i];
+        float hitRatio = (float) hitCounter[i] / (hitCounter[i] + missesCounter[i]);
+        float MissRatio = (float) missesCounter[i] / (hitCounter[i] + missesCounter[i]);
+        printf("| %-20s                | %-10.6f  | %-10.6f  | %-10.6f  | %-20d      |\n", names[i], hitMissRatio,hitRatio,MissRatio, (swappingInProcess[i] / 5));
+    }
+    printf("-------------------------------------------------------------------------------------------------------------\n");
  
 }
