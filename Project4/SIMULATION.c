@@ -155,8 +155,19 @@ int main(int arg1, char* arg2[]) {
 
     // To calculate the hit-miss ratio
     float hitMissRatio = (float) hitCounter / (hitCounter + missesCounter);
+ 
+     // To calculate the hit ratio
+    float hitRatio = (float) hitCounter / (hitCounter + missesCounter);
+ 
+   // To calculate the miss ratio
+    float MissRatio = (float) missesCounter / (hitCounter + missesCounter);
+ 
+ 
 
     // To print the output results
     printf("\nAverage number of processes that were successfully swapped in: %d", (swappingInProcess / 5));
-    printf("\nThe Hit Ratio: %.6f\n", hitMissRatio);
+    printf("\nThe Hit-Miss Ratio: %.6f\n", hitMissRatio);
+    printf("\nThe Hit Ratio: %.6f\n", hitRatio);
+    printf("\nThe Hit-Miss Ratio: %.6f\n", MissRatio);
+ 
 }
