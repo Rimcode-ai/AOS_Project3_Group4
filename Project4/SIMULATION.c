@@ -168,6 +168,6 @@ int main(int arg1, char* arg2[]) {
     printf("\nAverage number of processes that were successfully swapped in: %d", (swappingInProcess / 5));
     printf("\nThe Hit-Miss Ratio: %.6f\n", hitMissRatio);
     printf("\nThe Hit Ratio: %.6f\n", hitRatio);
-    printf("\nThe Hit-Miss Ratio: %.6f\n", MissRatio);
+    printf("\nThe Miss Ratio: %.6f\n", MissRatio);
  
 }
