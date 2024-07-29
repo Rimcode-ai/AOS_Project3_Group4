@@ -154,7 +154,7 @@ int main(int arg1, char* arg2[]) {
     }
 
     // To calculate the hit-miss ratio
-    float hitMissRatio = (float) hitCounter / (hitCounter + missesCounter);
+    float hitMissRatio = (float) hitCounter / missesCounter;
  
      // To calculate the hit ratio
     float hitRatio = (float) hitCounter / (hitCounter + missesCounter);
