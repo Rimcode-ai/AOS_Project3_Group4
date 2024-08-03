@@ -9,7 +9,7 @@
 #include <string.h>
 #include <time.h>
 
-#define BUFFER_SIZE 32
+#define BUFFER_SIZE 40
 #define READ_END 0
 #define WRITE_END 1
 #define CHILDREN 5
@@ -237,7 +237,7 @@ int main(void)
             &minutes, &seconds, &microseconds,
             &(today->tm_min), &(today->tm_sec), (int *)&(current_time.tv_usec),
             &diff_minutes, &diff_seconds, &diff_microseconds);
-        sprintf(message_buffer, "%01d:%02d.%03d: Child %d DONE\n",
+        sprintf(message_buffer, "%01d:%02d.%03d: Child %d HAS CLOSED THE PIPE\n",
                 diff_minutes,
                 diff_seconds,
                 diff_microseconds / 1000,
@@ -306,6 +306,7 @@ int main(void)
                             diff_seconds,
                             diff_microseconds / 1000,
                             child_index, message_counter++, buf_usr_in);
+                    
 
                     // WRITE TO THE PIPE.
                     write(pipe_fds[child_index][WRITE_END], message_buffer, strlen(message_buffer) + 1);
@@ -327,12 +328,14 @@ int main(void)
             &minutes, &seconds, &microseconds,
             &(today->tm_min), &(today->tm_sec), (int *)&(current_time.tv_usec),
             &diff_minutes, &diff_seconds, &diff_microseconds);
-        sprintf(message_buffer, "%01d:%02d.%03d: Child %d HAS CLOSED THE PIPE\n",
+            
+        sprintf(message_buffer, "%01d:%02d.%03d: Child %d HAS CLOSED THE PIPE \n",
                 diff_minutes,
                 diff_seconds,
                 diff_microseconds / 1000,
                 child_index);
         write(pipe_fds[child_index][WRITE_END], message_buffer, strlen(message_buffer) + 1);
+        
         close(pipe_fds[child_index][WRITE_END]);
     }
     else
@@ -340,5 +343,6 @@ int main(void)
         fprintf(stderr, "Error: fork() HAS failed");
         return 1;
     }
+    
     return 0;
 }
