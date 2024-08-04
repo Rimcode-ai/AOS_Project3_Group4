@@ -109,12 +109,12 @@
 0:29.004: 0:29.004: Child 4 Message 29
 #0:30.000: 0:30.000: Child 0 HAS CLOSED THE PIPE
 0:30.004: 0:30.004: Child 1 Message 27
-0:30.004: 0:30.004: Child 3 DONE
+0:30.004: 0:30.004: Child 3 HAS CLOSED THE PIPE
 0:30.005: 0:30.004: Child 4 Message 30
 0:30.005: 0:30.005: Child 4 Message 31
-0:31.004: 0:31.004: Child 1 DONE
+0:31.004: 0:31.004: Child 1 HAS CLOSED THE PIPE
 0:31.005: 0:31.005: Child 2 Message 32
-0:31.005: 0:31.005: Child 4 DONE
-0:32.005: 0:32.005: Child 2 DONE
+0:31.005: 0:31.005: Child 4 HAS CLOSED THE PIPE
+0:32.005: 0:32.005: Child 2 HAS CLOSED THE PIPE
 DONE: Parent///
 Terminating the main[rmodak@linux20305 Project6]$ 
